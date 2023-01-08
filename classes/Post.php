@@ -8,6 +8,8 @@ class Post extends Base
 
     public $views;
 
+    public $imageId;
+
     public $body;
 
     public $published;
@@ -22,5 +24,12 @@ class Post extends Base
     public static function getTableName()
     {
         return 'posts';
+    }
+
+    public function getImageName()
+    {
+        $imageName = Image::findBy('id', $this->imageId);
+        var_dump($imageName);die;
+        return $imageName= Image::findBy('id', $this->imageId);
     }
 }

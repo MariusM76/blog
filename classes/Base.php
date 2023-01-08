@@ -136,7 +136,7 @@ abstract class Base
         }
     }
 
-    private static function ObjFromArray($array)
+    public static function ObjFromArray($array)
     {
         $className = static::class;
         $object = new $className();
