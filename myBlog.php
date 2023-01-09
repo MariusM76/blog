@@ -1,5 +1,9 @@
-<?php include "header.php" ?>
-<?php include "mainmenu.php"?>
+<?php
+include "header.php";
+include "mainmenu.php";
+
+$topics = Topic::findAll();
+?>
 
 <div class="container nav justify-content-center">
     <div class="row">
@@ -11,17 +15,19 @@
                         <li class="nav-item px-4 border-end">
                             <a class="nav-link fw-semibold" aria-current="page" href="#">All Posts</a>
                         </li>
+                        <?php
+                        foreach ($topics as $topic):
+                        ?>
                         <li class="nav-item px-4 border-end">
-                            <a class="nav-link fw-semibold" href="#">Travel</a>
+                            <a class="nav-link fw-semibold" href="#"><?php echo $topic->name;?></a>
                         </li>
+                        <?php endforeach;?>
                         <li class="nav-item px-4 border-end">
                             <a class="nav-link fw-semibold" href="#">My Top 5</a>
-                        </li>
-                        <li class="nav-item px-4 border-end">
-                            <a class="nav-link fw-semibold" href="#">Art & Culture</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
+</div>
