@@ -28,8 +28,15 @@ class Post extends Base
 
     public function getImageName()
     {
-        $imageName = Image::findBy('id', $this->imageId);
-        var_dump($imageName);die;
+//        $imageName = Image::findBy('id', $this->imageId);
+//        var_dump($imageName);die;
         return $imageName= Image::findBy('id', $this->imageId);
     }
+
+    public function getTopicName()
+    {
+        $topic = new Topic($this->topicId);
+        return $topic->name;
+    }
+
 }
