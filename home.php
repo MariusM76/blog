@@ -71,7 +71,8 @@ include "mainmenu.php";
                                     <p class="card-text"><small class="text-muted"><?php echo $post->createdAt; ?></small></p>
                                     <h5 class="card-title"><?php echo $post->title ?></h5>
                                     <p class="card-text text-truncate"><?php echo $post->body ?></p>
-                                    <p class="card-text"><small class="text-muted">Last updated: <?php echo $lastUpdate; ?></small></p>
+                                    <p class="card-text my-3"><small class="text-muted border-top">Last updated: <?php echo $lastUpdate; ?></small></p>
+                                    <p class="card-text "><?php echo $post->likes ?> <i class="fa fa-heart-o" aria-hidden="true"></i></p>
                                     </a>
                                 </div>
                             </div>
