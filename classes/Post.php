@@ -8,6 +8,8 @@ class Post extends Base
 
     public $views;
 
+    public $likes;
+
     public $imageId;
 
     public $body;

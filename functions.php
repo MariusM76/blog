@@ -65,3 +65,14 @@ function lastUpdateShow($id){
     return format_interval($interval);
 
 }
+
+function ObjFromArray($array){
+    $object = new stdClass();
+    foreach ($array as $key => $value) {
+        if (is_array($value)) {
+            $value = ObjFromArray($value);
+        }
+        $object->$key = $value;
+    }
+    return $object;
+}
