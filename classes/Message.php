@@ -2,13 +2,11 @@
 
 class Message extends Base
 {
-    public $firstName;
-
-    public $lastName;
-
-    public $email;
+    public $name;
 
     public $message;
+
+    public $postId;
 
 
     public static function getTableName()
