@@ -16,6 +16,8 @@ class User extends Base
 
     public $subscribe;
 
+    public $type;
+
 
     public static function getTableName()
     {
