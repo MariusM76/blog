@@ -11,7 +11,7 @@ session_start();
                 <div class="card-body">
                     <form action="../blog-backend/processLogin.php" method="post" class="mt-4">
                         <div class="form-floating mb-3 mt-2 col align-self-center">
-                            <input type="email" class="form-control" name="email" id="email"
+                            <input  autocomplete="off" type="email" class="form-control" name="email" id="email"
                                    placeholder="name@example.com">
                             <label for="email">Email address</label>
                         </div>
@@ -22,9 +22,9 @@ session_start();
                         <button type="submit" class="btn btn-primary mt-2">Login</button>
                     </form>
                     <div>
-<!--                        <a href="insertUser.php">-->
-<!--                            <button type="submit" class="btn btn-primary mt-2">Create account</button>-->
-<!--                        </a>-->
+                        <a href="insertUser.php">
+                            <button type="submit" class="btn btn-primary mt-2">Create account</button>
+                        </a>
                         <a href="home.php">
                             <button type="submit" class="btn btn-primary mt-2">Back to home page</button>
                         </a>

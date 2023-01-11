@@ -1,7 +1,8 @@
 <?php
+//session_start();
 include "header.php";
 include "mainmenu.php";
-//include "../blog-backend/functions.php";
+
 ?>
 
 <div class="container-fluid">
@@ -21,6 +22,7 @@ include "mainmenu.php";
                         ?>
                         <div class="card mb-3 border-dark">
                             <a class="text-decoration-none fw-semibold text-dark link-info" href="post.php?postId=<?php echo $lastPost->getId()?>">
+                            <span class="fs-3 badge position-absolute top-0 start-50 translate-middle badge rounded-pill bg-info">FEATURED POST</span>
                             <img src="images/<?php echo $image->file ?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text"><small class="text-muted"><?php echo $lastPost->createdAt; ?></small></p>
@@ -40,9 +42,11 @@ include "mainmenu.php";
             <h2 class="mt-5 mb-5">Never Miss a New Post.</h2>
         </div>
         <div class="col-5 mt-5 mb-5 text-end">
-            <input class="fs-4 mt-5 mb-5 border-top-0 border-start-0 border-end-0" type="email"
+            <form action="../blog-backend/processSubscribe.php" method="post">
+            <input class="fs-4 mt-5 mb-5 border-top-0 border-start-0 border-end-0" type="email" name="email" id="email"
                    placeholder="Enter your email: ">
             <button class="btn btn-outline-info fs-5 mt-5 mb-5 " type="submit">Subscribe</button>
+            </form>
         </div>
     </div>
     <div class="container-fluid text-center">
@@ -52,10 +56,11 @@ include "mainmenu.php";
                     <h4 class="mt-4 mb-3" style="letter-spacing:0.4em;">TRAIN OF THOUGHT</h4>
                 </div>
                 <?php
-                $allPost = Post::findAll();
+                $allPost = Post::findBy('published','Y');
                 foreach ($allPost as $post):
                     $image = new Image ($post->imageId);
                     $lastUpdate = lastUpdateShow($lastPost->getId());
+                    $messages = count(Message::findBy('postId',$post->getId()))
                 ?>
 
                     <div class="card my-5 text-start col-md-6 offset-md-3" style="max-width: 640px;height: 253px;">
@@ -72,7 +77,7 @@ include "mainmenu.php";
                                     <h5 class="card-title"><?php echo $post->title ?></h5>
                                     <p class="card-text text-truncate"><?php echo $post->body ?></p>
                                     <p class="card-text my-3"><small class="text-muted border-top">Last updated: <?php echo $lastUpdate; ?></small></p>
-                                    <p class="card-text "><?php echo $post->likes ?> <i class="fa fa-heart-o" aria-hidden="true"></i></p>
+                                    <p class="card-text "><?php echo $messages ?> Comments; <?php echo $post->likes ?> <i class="fa fa-heart-o" aria-hidden="true"></i></p>
                                     </a>
                                 </div>
                             </div>

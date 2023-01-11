@@ -46,6 +46,7 @@ $topics = Topic::findAll();
             $allPost = Post::findBy('topicId',$_GET['topicId']);
         endif;
         foreach ($allPost as $post):
+        if ($post->published=='Y'):
         $image = new Image ($post->imageId);
         ?>
         <div class="col-5">
@@ -64,6 +65,6 @@ $topics = Topic::findAll();
             </div>
         </div>
     </div>
-    <?php endforeach; unset($_GET['topicId']); ?>
+    <?php endif; endforeach; unset($_GET['topicId']); ?>
 
 </div>

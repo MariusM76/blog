@@ -1,7 +1,7 @@
 <?php
 include "header.php";
 include "mainmenu.php";
-include "../blog-backend/views.php";
+//include "../blog-backend/views.php";
 
 
 $post = new Post($_GET['postId']);
@@ -44,16 +44,26 @@ $lastPosts = ObjFromArray($lastPosts);
                 </div>
             </div>
 
-            <div class="my-4 px-4">
+            <div class="my-3 px-4">
                 <?php
                 $messages = Message::findBy('postId',$post->getId());
                 if (count($messages)>0):
                 ?>
-                <h3 class="my-4">Messages :</h3>
-                <?php foreach($messages as $message): ?>
-                <div class="my-3"><?php echo $message->name; ?> wrote: </div>
-                <textarea maxlength="350" class="form-control my-3" ><?php echo $message->message; ?></textarea>
-                <?php endforeach; endif; ?>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header bg-info" id="flush-headingOne">
+                            <button class="accordion-button collapsed bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <h3 class="text-light bg-info">Messages :</h3>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <?php foreach($messages as $message): ?>
+                                <div class="my-3"><?php echo $message->name; ?> wrote: </div>
+                                <textarea maxlength="350" class="form-control my-3" ><?php echo $message->message; ?></textarea>
+                            <?php endforeach; endif; ?>
+                        </div>
+                    </div>
+                </div>
                 <h3 class="my-4">Leave a reply :</h3>
                 <?php if(getAuthUser()): ?>
                 <div><?php echo "  ".$_SESSION['authUser']." reply:  " ?></div>
