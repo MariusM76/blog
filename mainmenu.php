@@ -59,20 +59,26 @@
                                         <a href="#"><i class="fa fa-pinterest-p text-dark" aria-hidden="true"></i></a>
                                     </li>
                                 </ul>
-
+<!--                                --><?php //var_dump($_SESSION['role']);die; ?>
                                 <span class="px-2">
-                                    <?php if (getAuthUser()): ?>
+                                    <?php if (getAuthUser() && $_SESSION['role']=='Admin'): ?>
                                         <?php echo "  Welcome,  ".$_SESSION['authUser']."   " ?>
                                         <span class="">
                                             <a class="btn btn-outline-info text-dark" href="../blog-backend/logout.php">Logout</a>
-                                        </span>
-
-                                </span>
-                                <span class="px-2">
                                             <a class="btn btn-outline-info text-dark" href="../blog-frontend/admin.php">Go to Admin Panel</a>
                                         </span>
-                                <?php else: ?>
+<!--                                    <span class="px-2">-->
+<!--                                            <a class="btn btn-outline-info text-dark" href="../blog-frontend/admin.php">Go to Admin Panel</a>-->
+<!--                                        </span>-->
 
+                                </span>
+
+                                <?php elseif (getAuthUser()): ?>
+                                    <?php echo "  Welcome,  ".$_SESSION['authUser']."   " ?>
+                                        <span class="">
+                                            <a class="btn btn-outline-info text-dark" href="../blog-backend/logout.php">Logout</a>
+                                        </span>
+                                <?php else: ?>
                                     <form class="d-flex px-2" >
                                         <a href="login.php" class="btn btn-outline-success "  >Login</a>
                                     </form>

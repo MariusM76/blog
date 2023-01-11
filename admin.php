@@ -1,6 +1,5 @@
 <?php
 include 'header.php';
-//include "../blog-backend/functions.php";
 include 'mainmenu.php';
 ?>
 
@@ -92,8 +91,7 @@ include 'mainmenu.php';
                 <div class="card-body">
                     <h5 class="card-title">Welcome admin!!</h5>
                     <p class="card-text">You can select an option from menus</p>
-                    <a href="searchProductCategorySales"><button type="submit" class="btn btn-dark">Sales statistics</button></a>
-                    <a href="main.php" class="btn btn-primary">Go to main page</a>
+                    <a href="main.php" class="btn btn-info">Go to main page</a>
                 </div>
             </div>
         </div>
