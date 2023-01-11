@@ -41,4 +41,10 @@ class Post extends Base
         return $topic->name;
     }
 
+    public function getAuthorName()
+    {
+        $author = new User($this->userId);
+        return $author->username;
+    }
+
 }

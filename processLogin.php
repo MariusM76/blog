@@ -11,8 +11,6 @@ $userEmail = User::findBy('email',$loginEmail);
 $userPass = User::findBy('password',$loginpass);
 
 
-//
-//var_dump($dbUser);die;
 if ($userEmail!=null) {
     $dbUser = new User($userEmail[0]->getId());
     if ($loginEmail==$userEmail[0]->email && $loginpass== $dbUser->password) {
@@ -22,9 +20,9 @@ if ($userEmail!=null) {
 //        var_dump($_SESSION['authUser']);die;
 
         if ($_SESSION['role']=='admin'){
-            header('Location: admin.php');
+            header('Location: ../blog-frontend/admin.php');
         } else {
-            header('Location: main.php');
+            header('Location: ../blog-frontend/home.php');
         }
     } else {
         echo '.<div>"Incorrect password. Please try again";</div>.';
@@ -33,4 +31,4 @@ if ($userEmail!=null) {
 }
 
 
-header('Location: ../blog-frontend/home.php');
+//header('Location: ../blog-frontend/home.php');
