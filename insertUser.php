@@ -1,6 +1,7 @@
 <?php
 include 'header.php';
-include "../blog-backend/functions.php";
+include "mainmenu.php";
+//include "../blog-backend/functions.php";
 ?>
 
 <div class="container">
@@ -19,7 +20,6 @@ include "../blog-backend/functions.php";
                 <div class="mb-3">
                     <label for="password" class="form-label">Password:</label>
                     <input type="password" class="form-control" id="password" name ="password" placeholder="Enter password:">
-<!--                    <textarea class="form-control" id="body" name ="body" placeholder="Enter post content:"></textarea>-->
                 </div>
                 <div class="mb-3">
                     <label for="subscribe" class="form-label">Subscribe:</label>
