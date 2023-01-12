@@ -37,11 +37,12 @@
                                         <a class="nav-link fw-semibold" href="#">Contact</a>
                                     </li>
                                 </ul>
-                                <form class="d-flex px-3" role="search">
+                                <form action="search.php" method="get" class="d-flex px-3" role="search">
                                     <input class="form-control fw-semibold me-2 border-bottom border-top-0 border-start-0 border-end-0"
-                                           type="search" placeholder="Search..." aria-label="Search">
-                                    <button class="btn btn-outline-secondary " type="submit"><i
-                                                class="fa fa-search"></i></button>
+                                           type="text" name="search" placeholder="Search..." aria-label="Search"/>
+                                    <button class="btn btn-outline-secondary " type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
                                 </form>
                                 <ul class="navbar-nav me-auto my-2 my-lg-0 px-4 border-start border-end text-decoration-none">
                                     <li class="nav-item px-2 text-decoration-none">
@@ -67,10 +68,6 @@
                                             <a class="btn btn-outline-info text-dark" href="../blog-backend/logout.php">Logout</a>
                                             <a class="btn btn-outline-info text-dark" href="../blog-frontend/admin.php">Go to Admin Panel</a>
                                         </span>
-<!--                                    <span class="px-2">-->
-<!--                                            <a class="btn btn-outline-info text-dark" href="../blog-frontend/admin.php">Go to Admin Panel</a>-->
-<!--                                        </span>-->
-
                                 </span>
 
                                 <?php elseif (getAuthUser()): ?>

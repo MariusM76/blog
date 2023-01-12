@@ -47,7 +47,6 @@ include "mainmenu.php";
 
                         </form>
                     </div>
-
                 <?php endif;?>
                 <button type="submit" class="btn btn-primary mt-2">Delete post</button>
                 <?php unset($_POST['topicId']); endif;?>

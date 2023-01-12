@@ -62,27 +62,9 @@ include 'mainmenu.php';
                                     Manage messages
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li class="list-group-item list-group-item-action list-group-item-info"><a class="dropdown-item" href="insertMessage.php">Add message</a></li>
-                                    <li ><hr class="dropdown-divider"></li>
-                                    <li class="list-group-item list-group-item-action list-group-item-info"><a class="dropdown-item" href="viewMessages.php">View messages</a></li>
-                                    <li ><hr class="dropdown-divider"></li>
-                                    <li class="list-group-item list-group-item-action list-group-item-info"><a class="dropdown-item" href="updateMessage.php">Update message</a></li>
+                                    <li class="list-group-item list-group-item-action list-group-item-info"><a class="dropdown-item" href="viewMessages.php">View/Edit messages</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li class="list-group-item list-group-item-action list-group-item-info"><a class="dropdown-item" href="deleteMessage.php">Delete message</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="dropdown-center">
-                                <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Manage orders
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li class="list-group-item list-group-item-action list-group-item-info"><a class="dropdown-item" href="viewOrders.php">View orders</a></li>
-                                    <li ><hr class="dropdown-divider"></li>
-                                    <li class="list-group-item list-group-item-action list-group-item-info"><a class="dropdown-item" href="updateOrder.php">Update order</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li class="list-group-item list-group-item-action list-group-item-info"><a class="dropdown-item" href="deleteOrder.php">Delete order</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -91,7 +73,7 @@ include 'mainmenu.php';
                 <div class="card-body">
                     <h5 class="card-title">Welcome admin!!</h5>
                     <p class="card-text">You can select an option from menus</p>
-                    <a href="main.php" class="btn btn-info">Go to main page</a>
+                    <a href="home.php" class="btn btn-info">Go to home page</a>
                 </div>
             </div>
         </div>

@@ -26,6 +26,7 @@ include "mainmenu.php";
 
                     if ($topicId=='All'):?>
             <form action="updatePost2.php" method="post">
+                <form action="updatePost2.php" method="post">
                         <div class="mb-3">
                             <label for="postId" class="form-label">Title:</label>
                             <select type="text" class="form-control" id="postId" name ="postId" placeholder="Select post:">
