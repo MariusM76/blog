@@ -41,6 +41,12 @@ class Post extends Base
         return $topic->name;
     }
 
+    public function getNoOfMessages()
+    {
+        $noOfMessages = Message::findBy('postId',$this->getId());
+        return count($noOfMessages);
+    }
+
     public function getAuthorName()
     {
         $author = new User($this->userId);

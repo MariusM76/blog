@@ -14,4 +14,4 @@ $userData->createdAt = $time;
 $userData->save();
 
 
-header('Location: ../blog-frontend/home.php');
+header('Location: ../blog-frontend/admin.php');
