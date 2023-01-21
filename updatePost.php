@@ -9,6 +9,7 @@ include "mainmenu.php";
     <div class="row mt-4">
         <div class="col-12">
             <form action="updatePost.php" method="post" enctype="multipart/form-data">
+                <h3>UPDATE POST</h3>
                 <div class="mb-3">
                     <label for="topicId" class="form-label">Choose topic:</label>
                     <select type="text" class="form-control" id="topicId" name ="topicId" placeholder="Select topic:">
@@ -44,7 +45,7 @@ include "mainmenu.php";
                                     <option value="<?php echo $post->getId(); ?>"><?php echo $post->title; ?></option>
                                 <?php endforeach; ?>
                             </select>
-
+                                <button type="submit" class="btn btn-primary mt-2">Submit</button>
                             </form>
                         </div>
 

@@ -15,7 +15,7 @@ include "mainmenu.php";
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <a href="admin.php"><button class="btn btn-info mt-2 col-md-4 offset-md-7">Back to admin page</button></a>
+<!--            <a href="admin.php"><button class="btn btn-info mt-2 col-md-4 offset-md-7">Back to admin page</button></a>-->
         </div>
     </div>
 </div>

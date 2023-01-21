@@ -23,23 +23,21 @@ $messages = Message::findAll();
             <?php
             if (isset($_POST['postId'])):
                 $post = new Post($_POST['postId']);
-                $messagesForPostId = Message::findBy('postId',$_POST['postId']);
-            if (count($messagesForPostId)>=2):?>
-            <form action="../blog-backend/processDeleteMessage.php" method="post">
-
+                $messagesForPostId = Message::findBy('postId',$_POST['postId']); ?>
+                <form action="../blog-backend/processDelete.php" method="post">
+            <?php if (count($messagesForPostId)>=2):?>
                     <div class="my-3">
                         <label for="messageId" class="form-label">Messages for post: <?php echo $post->title ;?></label>
-                        <select class="form-control" id="messageId" name ="messageId" ">
+                        <select class="form-control" id="messageId" name ="message" >
                             <?php foreach($messagesForPostId as $messageForPostId):?>
                                 <option value="<?php echo $messageForPostId->getId(); ?>"><?php echo $messageForPostId->message; ?> </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                 <?php elseif (count($messagesForPostId)==1):?>
-                    <form action="../blog-backend/processDeleteMessage.php" method="post">
                         <div class="mb-3">
                             <label for="messageId" class="form-label">Message for post: <?php echo $post->title ;?></label>
-                            <select class="form-control" id="messageId" name ="messageId" ">
+                            <select class="form-control" id="messageId" name ="message">
                                 <option value="<?php echo $messagesForPostId[0]->getId(); ?>"><?php echo $messagesForPostId[0]->message; ?> </option>
                             </select>
                         </div>

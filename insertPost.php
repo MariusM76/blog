@@ -31,7 +31,7 @@ include "mainmenu.php";
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <a href="admin.php"><button class="btn btn-primary mt-2">Back to admin page</button></a>
+<!--            <a href="admin.php"><button class="btn btn-primary mt-2">Back to admin page</button></a>-->
         </div>
     </div>
 </div>

@@ -2,38 +2,21 @@
 include "header.php";
 include "mainmenu.php";
 
+$userToUpdate = new User($_GET['userId']);
 ?>
 
 <div class="container">
     <div class="row mt-4 justify-content-center">
         <div class="col-6">
-            <form action="updateUser.php" method="post" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="userId" class="form-label">Choose user to edit/update:</label>
-                    <select type="text" class="form-control" id="userId" name ="userId" placeholder="Select user:">
-                        <?php foreach(User::findAll() as $user): ?>
-                            <option value="<?php echo $user->getId(); ?>"><?php echo $user->username; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-
-            <?php
-            if (isset($_POST['userId'])):
-            $user = new User($_POST['userId']);
-//            var_dump($user);die;
-            ?>
-
-            <form action="../blog-backend/processUpdateUser.php?userId=<?php echo $user->getId(); ?>" method="post">
+            <form action="../blog-backend/processUpdateUser.php?userId=<?php echo $userToUpdate->getId(); ?>" method="post">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username:</label>
 <!--                    <input hidden type="text" class="form-control" id="userId" name ="userId"  value="--><?php //echo $user->getId(); ?><!--">-->
-                    <input type="text" class="form-control" id="username" name ="username" placeholder="Edit username:" value="<?php echo $user->username; ?>">
+                    <input type="text" class="form-control" id="username" name ="username" placeholder="Edit username:" value="<?php echo $userToUpdate->username; ?>">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email:</label>
-                    <input type="email" class="form-control" id="email" name ="email" placeholder="Enter email:" value="<?php echo $user->email; ?>">
+                    <input type="email" class="form-control" id="email" name ="email" placeholder="Enter email:" value="<?php echo $userToUpdate->email; ?>">
                 </div>
                 <div class="mb-3">
                     <label for="role" class="form-label">Role:</label>
@@ -58,8 +41,7 @@ include "mainmenu.php";
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <?php unset($_POST['userId']); endif?>
-            <a href="admin.php"><button class="btn btn-info mt-2 col-md-4 offset-md-7">Back to admin page</button></a>
+            <a href="viewEditDeleteUsers.php"><button class="btn btn-info mt-2 col-md-4 offset-md-7">Back to users admin page</button></a>
         </div>
     </div>
 </div>
