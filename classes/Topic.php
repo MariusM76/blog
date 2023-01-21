@@ -9,4 +9,9 @@ class Topic extends Base
     {
         return 'topics';
     }
+
+    public function getNoOfPosts()
+    {
+        return $noOfPosts = count(Post::findBy('topicId',$this->getId()));
+    }
 }

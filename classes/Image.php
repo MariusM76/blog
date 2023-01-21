@@ -9,4 +9,10 @@ class Image extends Base
     {
         return 'images';
     }
+
+    public function getPostTitle()
+    {
+        $post = Post::findBy('imageId',$this->getId());
+        return $post[0]->title;
+    }
 }
