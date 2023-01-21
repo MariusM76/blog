@@ -3,6 +3,7 @@
 include "header.php";
 include "mainmenu.php";
 
+//var_dump($_SERVER);die;
 ?>
 
 <div class="container-fluid">
@@ -12,7 +13,7 @@ include "mainmenu.php";
                 <div class="row justify-content-center">
                     <div class="col-10">
                         <?php
-                        $allPost = Post::findAll();
+                        $allPost = Post::findBy('published','Y');
                         $countPosts = count ($allPost)-1;
                         $lastPost = $allPost[$countPosts];
                         $image = new Image ($lastPost->imageId);

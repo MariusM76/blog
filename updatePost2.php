@@ -2,7 +2,7 @@
 include "header.php";
 include "mainmenu.php";
 
-$postToUpdate= new Post($_POST['postId']);
+$postToUpdate= new Post($_GET['postId']);
 ?>
 
 
@@ -41,7 +41,7 @@ $postToUpdate= new Post($_POST['postId']);
                     <input type="file" class="form-control" id="image" name ="image" placeholder="Select your image:">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a href="admin.php"><button class="btn btn-info mt-2 col-md-2 offset-md-9">Back to admin page</button></a>
+                <a href="viewEditDeletePosts.php"><button class="btn btn-info mt-2 col-md-2 offset-md-9">Back to edit/update/delete admin page</button></a>
             </form>
 
         </div>

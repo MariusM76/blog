@@ -1,7 +1,8 @@
 <?php
 
 include 'header.php';
-session_start();
+include 'mainmenu.php';
+//session_start();
 
 ?>
 <div class="container">

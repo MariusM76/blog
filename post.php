@@ -25,9 +25,10 @@ $lastPosts = ObjFromArray($lastPosts);
                     <p class="card-text"><small class="text-muted"><?php echo $post->createdAt; ?>
                             <i class="fa fa-heart-o px-1 offset-md-8 text-decoration-none text-muted fs-6" aria-hidden="true">
                                 <span class="top-0 start-100 translate-middle badge rounded-pill bg-info "><?php echo $post->likes; ?>
-<!--                                    <span class="visually-hidden">unread messages</span>-->
                                 </span>
                             </i></small>
+                            <p><small class="text-muted">Written by <?php echo $post->getAuthorName();?></small></p>
+
                     </p>
                     <h2 class="card-title my-4"><?php echo $post->title; ?></h2>
                     <img src="images/<?php echo $image->file; ?>" class="card-img-top" alt="...">
@@ -41,6 +42,13 @@ $lastPosts = ObjFromArray($lastPosts);
                     </div>
                     <span class="mb-4 px-2 text-decoration-none text-muted fs-6">If you like, drop a like:   </span>
                     <a class="text-decoration-none fw-semibold fs-5 text-dark" href="../blog-backend/addLike.php?postId=<?php echo $post->getId(); ?>"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                    <div class="px-2 mt-4 text-decoration-none text-muted fs-6"> PDF OPTIONS:
+                        <a class="px-4 mx-3 offset-md-0 btn btn-info text-decoration-none text-muted fs-6" target="_blank" href="../blog-backend/postPDF.php?postId=<?php echo $post->getId(); ?>">Save to PDF</a>
+                        <a class="px-2 btn btn-warning text-decoration-none text-muted fs-6" target="_self" href="../blog-backend/downloadToPDF.php?postId=<?php echo $post->getId(); ?>">download PDF</a>
+                    </div >
+                    <div class="px-2 mt-4 text-decoration-none text-muted fs-6">E-mail OPTIONS:
+                        <a class=" px-4 btn btn-info text-decoration-none text-muted fs-6" target="_blank" href="../blog-backend/processSendEmail.php?postId=<?php echo $post->getId(); ?>">Send to email</a>
+                    </div>
                 </div>
             </div>
 
@@ -53,20 +61,68 @@ $lastPosts = ObjFromArray($lastPosts);
                     <div class="accordion-item">
                         <h2 class="accordion-header bg-info" id="flush-headingOne">
                             <button class="accordion-button collapsed bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                <h3 class="text-light bg-info">Messages :</h3>
+                                <h3 class="text-light bg-info">Messages (<?php echo count($messages) ?>) :</h3>
                             </button>
                         </h2>
+                        <?php foreach($messages as $message): ?>
                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <?php foreach($messages as $message): ?>
+
                                 <div class="my-3"><?php echo $message->name; ?> wrote: </div>
-                                <textarea maxlength="350" class="form-control my-3" ><?php echo $message->message; ?></textarea>
-                            <?php endforeach; endif; ?>
+                                <textarea disabled maxlength="350" class="form-control my-3" ><?php echo $message->message; ?></textarea>
+
+                            <?php
+                            $replies = Reply::findBy('messageId',$message->getid());
+                            if (count($replies)>2):
+                                foreach ($replies as $reply):
+                                ?>
+                                <div class="text-right">
+                                    <div class="my-3"><?php echo $reply->name; ?> wrote: </div>
+                                    <textarea disabled maxlength="350" class="form-control my-3 text-right" style="max-width: 550px;"><?php echo $reply->body; ?></textarea>
+                                </div>
+                                <?php endforeach;?>
+                            <?php elseif (count($replies)==1): ?>
+                            <div class="text-right">
+                                <div class="my-3"><?php echo $replies[0]->name;?> replied: </div>
+                                <textarea disabled maxlength="350" class="form-control my-3 text-right" style="max-width: 550px;"><?php echo $replies[0]->body; ?></textarea>
+                            </div>
+                            <?php endif;?>
+
+
+                            <form action="../blog-backend/processReply.php" method="post"
+                                <label class="btn-group dropend border-0">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle text-decoration-none border-0 border-top" data-bs-toggle="dropdown" aria-expanded="false">
+                                        reply
+                                    </button>
+                                    <ul class="dropdown-menu border-0 bg-info">
+                                    <?php
+                                    if(getAuthUser()):
+                                    $author = $_SESSION['authUser'];?>
+                                        <label class="form-label text-decoration-none px-3"> <?php echo $author; ?>: </label>
+                                        <input hidden for="messageId" name ="messageId" id="messageId" class="form-label" value="<?php echo $message->getId();?>">
+                                        <input hidden for="userId" name ="userId" id="userId" class="form-label" value="<?php echo $_SESSION['id']; ?>"
+                                        <input hidden for="messageId" name ="messageId" id="messageId" class="form-label" value="<?php echo $message->getId();?>">
+                                        <textarea id="body" name="body" class="text-start mx-3" style="min-width: 650px;"></textarea>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <button type="submit" class="btn">Submit</button>
+                                    <?php else:?>
+                                        <label class="form-label text-decoration-none px-3">  Name: </label>
+                                        <input hidden for="messageId" name ="messageId" id="messageId" class="form-label" value="<?php echo $message->getId();?>">
+                                        <input type="text" for="userName" name ="userName" id="userName" class="form-label text-decoration-none text-muted border-bottom border-top-0 border-start-0 border-end-0" ></input>
+                                        <textarea id="body" name="body" class="text-start mx-3" style="min-width: 650px;"></textarea>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <button type="submit" class="btn">Submit</button>
+                                    <?php endif;?>
+                                    </ul>
+                                </div>
+                            </form>
+                        <?php endforeach;?>
                         </div>
                     </div>
                 </div>
-                <h3 class="my-4">Leave a reply :</h3>
+        <?php endif;?>
+                <h3 class="my-5">Leave a message :</h3>
                 <?php if(getAuthUser()): ?>
-                <div><?php echo "  ".$_SESSION['authUser']." reply:  " ?></div>
+                <div><?php echo "  ".$_SESSION['authUser']." : " ?></div>
                     <form action="../blog-backend/addMessage.php" method="post">
                         <input hidden for="postId" name ="postId" id="postId" class="form-label" value="<?php echo $post->getId();?>">
 

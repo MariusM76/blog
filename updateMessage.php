@@ -40,6 +40,7 @@ $assignedPost = new Post($messageToUpdate->postId);
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <a href="viewMessages.php"><button class="btn btn-info mt-2 col-md-3 offset-md-8">Back to messages admin page</button></a>
         </div>
     </div>
 </div>

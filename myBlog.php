@@ -36,7 +36,7 @@ $topics = Topic::findAll();
         </nav>
     </div>
 </div>
-<?php //var_dump($_GET['topicId']);die;?>
+
 <div class="container">
     <div class="row justify-content-center">
         <?php
@@ -66,5 +66,4 @@ $topics = Topic::findAll();
         </div>
     </div>
     <?php endif; endforeach; unset($_GET['topicId']); ?>
-
 </div>
