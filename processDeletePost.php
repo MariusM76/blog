@@ -1,6 +1,7 @@
 <?php
 include 'functions.php';
 
+var_dump($_POST);die;
 
 $postToDelete = new Post($_POST['postId']);
 $imageToDelete = new Image($postToDelete->imageId);
